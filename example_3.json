@@ -1,0 +1,25 @@
+{
+	"doc": {
+		"type": "it.obj.acc.desc",
+		"comment": "Description of the computer equipment object",
+		"number": "1001",
+		"date": "2022-10-31",
+		"obj": {
+			"number": "101240000001",
+			"type": "WS",
+			"location": "К-4",
+			"user": "Пастаджян Ксения Сергеевна",
+			"expldate": "2011-09-23",
+			"devices": {
+					"0": ["devname", "invnumb", "devtype", "mnfdate", "mnfcountry", "mnfname", "expldate", "devname_acc", "b_acc", "sernumb"],
+					"1": ["NONAME (MB GIGABYTE GA-H61M-S1)", "101240000001", "SYSBL", "", "RUSSIA", "NONAME", "2011-09-23", "", "10020000000000244210124", "2/A/ECA424 00496"],
+					"2": ["eMachines E200HV b", "101240000001", "DISPL", "2011-05-01", "CHINA", "ACER", "2011-09-23", "", "10020000000000244210124", "ETQ3Z0W004121047C34302"],
+					"3": ["Oklick 100M Black PS/2", "101240000001", "KEYBR", "", "CHINA", "OKLICK", "2011-09-23", "", "10020000000000244210124", "KK100MBKX2ACX00670"],
+					"4": ["OKLICK OPTICAL MOUSE 125M", "101240000001", "MOUSE", "", "CHINA", "OKLICK", "2011-09-23", "", "10020000000000244210124", "51659200186"]
+
+			}
+		}
+
+	}
+
+}

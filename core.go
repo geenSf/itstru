@@ -73,17 +73,6 @@ var store = struct {
 
 var ErrorNoSuchKey = errors.New("no such key")
 
-func serializeOutputString() (string, error) {
-
-	json_data, err := json.Marshal(&dev)
-
-	if err != nil {
-		return "", err
-	}
-
-	return string(json_data), nil
-}
-
 func Delete(key string) error {
 	store.Lock()
 	delete(store.m, key)

@@ -17,6 +17,7 @@
 package main
 
 import (
+	"encoding/json"
 	"errors"
 	"sync"
 )
@@ -63,12 +64,25 @@ type Device struct {
 	User         string `json:"user"`
 }
 
+var dev *Device
+
 var store = struct {
 	sync.RWMutex
 	m map[string]*Device
 }{m: make(map[string]*Device)}
 
 var ErrorNoSuchKey = errors.New("no such key")
+
+func serializeOutputString() (string, error) {
+
+	json_data, err := json.Marshal(&dev)
+
+	if err != nil {
+		return "", err
+	}
+
+	return string(json_data), nil
+}
 
 func Delete(key string) error {
 	store.Lock()
@@ -78,17 +92,23 @@ func Delete(key string) error {
 	return nil
 }
 
-func Get(key string) (*Device, error) {
+func Get(key string) (string, error) {
 
 	store.RLock()
 	value, ok := store.m[key]
 	store.RUnlock()
 
 	if !ok {
-		return nil, ErrorNoSuchKey
+		return "", ErrorNoSuchKey
 	}
 
-	return value, nil
+	json_data, err := json.Marshal(&value)
+
+	if err != nil {
+		return "", err
+	}
+
+	return string(json_data), nil
 
 }
 
@@ -104,10 +124,15 @@ func GetCollection() map[string]*Device {
 
 }
 
-func Put(key string, value *Device) error {
+func Put(key string, value string) error {
+
+	err := json.Unmarshal([]byte(value), &dev)
+	if err != nil {
+		return err
+	}
 
 	store.Lock()
-	store.m[key] = value
+	store.m[key] = dev
 	store.Unlock()
 
 	return nil

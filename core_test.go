@@ -213,12 +213,6 @@ func TestGetCollection(t *testing.T) {
 		User:         "Пастаджян Ксения Сергеевна",
 	}
 
-	//m := make(map[string]*Device)
-	//m[key1] = &value1
-	//m[key2] = &value2
-	//m[key3] = &value3
-
-	//var val *Device
 	var err error
 
 	defer delete(store.m, key1)
@@ -269,25 +263,5 @@ func TestGetCollection(t *testing.T) {
 	if s[key3] != &value3 {
 		t.Error("on store[key3] expected an error")
 	}
-
-	/*
-		if err == nil {
-			t.Error("expected an error")
-		}
-		if !errors.Is(err, ErrorNoSuchKey) {
-			t.Error("unexpected error:", err)
-		}
-
-		store.m[key] = &value
-
-		val, err = Get(key)
-		if err != nil {
-			t.Error("unexpected error:", err)
-		}
-
-		if val != &value {
-			t.Error("val/value mismatch")
-		}
-	*/
 
 }
